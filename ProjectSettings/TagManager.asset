@@ -8,6 +8,8 @@ TagManager:
   - Inimigo
   - BolinhaDGude
   - Vagalume
+  - Vagalume_texto_tag
+  - Bolinha_De_Gude_tag
   layers:
   - Default
   - TransparentFX

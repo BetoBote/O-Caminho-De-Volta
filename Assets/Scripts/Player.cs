@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -15,20 +16,37 @@ public class Player : MonoBehaviour
     private float meuTempoDano = 0;
     public int bolinhas = 0;
     public int vagalumes = 0;
+    private Text Vagalume_text;
+    private Text Bolinhas_text;
+
+    private Gerenciador GJ;
 
 
     void Start()
+
     {
-        
+        GJ = GameObject.FindGameObjectWithTag("GameController").GetComponent<Gerenciador>();
+
+
+
+
+        Vagalume_text = GameObject.FindGameObjectWithTag("Vagalume_texto_tag").GetComponent<Text>();
+        Bolinhas_text = GameObject.FindGameObjectWithTag("Bolinha_De_Gude_tag").GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Mover();
-        Pular();
-        Apontar();
-        Dano();
+        if(GJ.EstadoDoJogo() == true)
+        {
+            Mover();
+            Pular();
+            Apontar();
+            Dano();
+        }
+
+
+        
     }
 
     void Mover()
@@ -86,12 +104,14 @@ public class Player : MonoBehaviour
         {
             Destroy(gatilho.gameObject);
             bolinhas++;
+            Bolinhas_text.text = bolinhas.ToString();
         }
 
         if (gatilho.gameObject.tag == "Vagalume")
         {
             Destroy(gatilho.gameObject);
             vagalumes++;
+            Vagalume_text.text = vagalumes.ToString();
         }
     }
     void TemporizadorPulo()

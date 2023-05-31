@@ -8,6 +8,8 @@ public class Inimigo : MonoBehaviour
     public float velocidade = 1f;
     public float distInicial = -0.5f;
     public float distFinal = 2f;
+
+    private Gerenciador GJ;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +19,11 @@ public class Inimigo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Andar();
+        if (GJ.EstadoDoJogo() == true)
+        {
+            Andar();
+        }
+        
 
     }
 
