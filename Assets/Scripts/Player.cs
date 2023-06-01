@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     private Text Vagalume_text;
     private Text Bolinhas_text;
 
+    public float barraCoracao = 3;
+    public RectTransform imgbarraCoracao;
+
     private Gerenciador GJ;
 
 
@@ -42,7 +45,8 @@ public class Player : MonoBehaviour
             Mover();
             Pular();
             Apontar();
-            Dano();
+            //Dano();
+            TemporizadorDano();
         }
 
 
@@ -128,6 +132,8 @@ public class Player : MonoBehaviour
     {
         if(pode_dano == false)
         {
+            barraCoracao = barraCoracao - 1;
+            imgbarraCoracao.sizeDelta = new Vector2(barraCoracao * 100, 100);
             TemporizadorDano();
         }
     }
@@ -140,6 +146,7 @@ public class Player : MonoBehaviour
                 ImagemPersonagem.color = UnityEngine.Color.red;
                 pode_dano = false;
                 vida--;
+                Dano();
             }
             
         }

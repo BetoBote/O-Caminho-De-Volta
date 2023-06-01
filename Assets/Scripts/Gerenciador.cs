@@ -25,5 +25,7 @@ public class Gerenciador : MonoBehaviour
     public void LigarJogo()
     {
         GameLigado = true;
+        Time.timeScale = 1;
+
     }
 }

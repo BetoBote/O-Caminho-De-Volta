@@ -13,6 +13,7 @@ public class Inimigo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GJ = GameObject.FindGameObjectWithTag("GameController").GetComponent<Gerenciador>();
         ImagemPersonagem = GetComponent<SpriteRenderer>();
     }
 
